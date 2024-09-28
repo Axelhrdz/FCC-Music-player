@@ -94,3 +94,7 @@ li{
 .songActions i{
     cursor: pointer;
 }
+.songActions i:hover{
+    scale: 1.1;
+    color: red;
+}

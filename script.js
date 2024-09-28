@@ -115,7 +115,5 @@ const renderSongs = (array) => {
         ulSongs.append(songItem);
     })
 }
-
-
-
-console.log(renderSongs(allSongs))  
+renderSongs(allSongs);
+ 
