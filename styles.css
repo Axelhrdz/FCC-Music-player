@@ -19,6 +19,9 @@ img, video{
     width: 100%;
     display: block;
 }
+ul{
+    padding: 0;
+}
 li{
     list-style: none;
 }
@@ -67,6 +70,11 @@ li{
 .playlist{
     margin-top: 2rem;
 }
+#songs{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
 .song{
     display: flex;
 }
@@ -78,8 +86,11 @@ li{
 }
 .songActions{
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     gap: 1rem;
     width: 40%;
+}
+.songActions i{
+    cursor: pointer;
 }
