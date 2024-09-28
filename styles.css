@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+*{
+    margin: 0;
+    font-family: "Nunito", sans-serif;
+}
+body{
+    font-size: 18px;
+    line-height: 1.5;
+    background-color: #222;
+    color: #fff;
+    margin: 3em 2em;
+}
+img, video{
+    width: 100%;
+    display: block;
+}
+li{
+    list-style: none;
+}
+
+/* header */
+.header{
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.songInfo{
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-end; */
+    justify-content: flex-end;
+}
+#playType{
+    font-weight: 200;
+}
+#playTitle{
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+#playSummary, #userInfo{
+    color: #b2babb;
+}
+#userName{
+    font-weight: bold;
+}
+
+/* Button controls */
+.buttonControls{
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+.buttonControls i{
+    font-size: 2rem;
+    cursor: pointer;
+}
+.buttonControls i:hover{
+    scale: 1.1;
+}
+
+/* Song info */
+.playlist{
+    margin-top: 2rem;
+}
+.song{
+    display: flex;
+}
+.songTitle, #artist, #minutes, #delete{
+    cursor: pointer;
+}
+.songTitle{
+    width: 60%;
+}
+.songActions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 40%;
+}
