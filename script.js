@@ -98,32 +98,9 @@ console.log(songActions)
 console.log(artist)
 console.log(minutes)
 
-// Render songs function.
-// const renderSongs = (array) => {
-    
-
-//     const songItem = 
-//     `
-//     <ul id="songs">
-//         <li id="song">
-//             <span class="songTitle">test</span>
-//             <div class="songActions">
-//                 <span id="artist">test</span>
-//                 <span id="minutes">test</span>
-//                 <i id="delete" class="fa-solid fa-delete-left"></i> 
-//             </div>
-//         </li>
-//     </ul>
-//     `;
-// }
-
 const renderSongs = (array) => {
     const htmlSongs = [...array];
     htmlSongs.forEach((song, index) => {
-        // console.log(song.id)
-        // console.log(song.title)
-        // console.log(song.artist)
-        // console.log(song.duration)
         const songItem = document.createElement('li');
         songItem.classList.add('song');
         songItem.innerHTML = 
