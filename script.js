@@ -117,3 +117,5 @@ const renderSongs = (array) => {
 }
 renderSongs(allSongs);
  
+//Play function
+const srcTest = "https://cdn.freecodecamp.org/curriculum/js-music-player/scratching-the-surface.mp3";
