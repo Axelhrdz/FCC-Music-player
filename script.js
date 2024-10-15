@@ -4,6 +4,9 @@ const shuffleButton = document.getElementById ('shuffle');
 const addButton = document.getElementById ('add');
 const dowloadButton = document.getElementById ('download');
 
+//Play thumbn
+const playTitle = document.getElementById('playTitle');
+
 //playlsit container
 const playlist = document.querySelector('.playlist');
 const ulSongs = document.getElementById('songs');
@@ -120,6 +123,7 @@ renderSongs(allSongs);
 //Play function -------
 
 //defaul/first song
+let songSelected = allSongs[0].title;
 const defaultSong = "https://cdn.freecodecamp.org/curriculum/js-music-player/scratching-the-surface.mp3";
 audio.src = defaultSong;
 
@@ -127,6 +131,7 @@ audio.src = defaultSong;
 let isPlaying = false;
 
 const playFunction = () => {
+  playTitle.innerText = songSelected;
   isPlaying = isPlaying ? false : true;
   console.log(isPlaying);
 
@@ -144,8 +149,9 @@ playButton.addEventListener('click', function(){
 
 playlist.addEventListener('click', function(e){
   // console.log(e.target);
-  const songSelected = e.target.innerText;
+  songSelected = e.target.innerText;
   console.log(songSelected);
+  playTitle.innerText = songSelected;
 
   allSongs.forEach(e => {
     // console.log(e.title)
