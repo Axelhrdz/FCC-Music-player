@@ -78,6 +78,9 @@ li{
 .song{
     display: flex;
 }
+.song:hover{
+    background-color: #0a0a0a;
+}
 .songTitle, #artist, #minutes, #delete{
     cursor: pointer;
 }

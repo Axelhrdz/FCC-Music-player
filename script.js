@@ -117,5 +117,44 @@ const renderSongs = (array) => {
 }
 renderSongs(allSongs);
  
-//Play function
-const srcTest = "https://cdn.freecodecamp.org/curriculum/js-music-player/scratching-the-surface.mp3";
+//Play function -------
+
+//defaul/first song
+const defaultSong = "https://cdn.freecodecamp.org/curriculum/js-music-player/scratching-the-surface.mp3";
+audio.src = defaultSong;
+
+
+let isPlaying = false;
+
+const playFunction = () => {
+  isPlaying = isPlaying ? false : true;
+  console.log(isPlaying);
+
+  if(isPlaying){
+    audio.play();
+  } else {
+    audio.pause();
+  }
+}
+
+playButton.addEventListener('click', function(){
+  playFunction();
+})
+
+
+playlist.addEventListener('click', function(e){
+  // console.log(e.target);
+  const songSelected = e.target.innerText;
+  console.log(songSelected);
+
+  allSongs.forEach(e => {
+    // console.log(e.title)
+
+    if(e.title === songSelected){
+      // console.log(true);
+      isPlaying = true;
+      audio.src = e.src;
+      audio.play();
+    } else return;
+  })
+})
