@@ -142,8 +142,19 @@ const playFunction = () => {
   }
 }
 
+const pausePlaytoggle = (playing) => {
+    if(isPlaying){
+      playButton.classList.remove('fa-play');
+      playButton.classList.add('fa-pause');
+    } else {
+      playButton.classList.remove('fa-pause');
+      playButton.classList.add('fa-play');
+    }
+}
+
 playButton.addEventListener('click', function(){
   playFunction();
+  pausePlaytoggle(isPlaying);
 })
 
 

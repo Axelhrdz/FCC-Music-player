@@ -55,12 +55,16 @@ li{
 /* Button controls */
 .buttonControls{
     display: flex;
+    /* justify-content: flex-start; */
+    align-items: center;
     gap: 1rem;
     margin-top: 2rem;
 }
 .buttonControls i{
-    font-size: 2rem;
+    font-size: 2.5rem;
+    width: 3rem;
     cursor: pointer;
+    text-align: center;
 }
 .buttonControls i:hover{
     scale: 1.1;
