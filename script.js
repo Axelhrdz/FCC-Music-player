@@ -134,6 +134,7 @@ const playFunction = () => {
   playTitle.innerText = songSelected;
   isPlaying = isPlaying ? false : true;
   console.log(isPlaying);
+  pausePlaytoggle(isPlaying);
 
   if(isPlaying){
     audio.play();
@@ -154,12 +155,12 @@ const pausePlaytoggle = (playing) => {
 
 playButton.addEventListener('click', function(){
   playFunction();
-  pausePlaytoggle(isPlaying);
 })
 
 
 playlist.addEventListener('click', function(e){
   // console.log(e.target);
+
   songSelected = e.target.innerText;
   console.log(songSelected);
   playTitle.innerText = songSelected;
@@ -171,6 +172,7 @@ playlist.addEventListener('click', function(e){
       // console.log(true);
       isPlaying = true;
       audio.src = e.src;
+      pausePlaytoggle(isPlaying);
       audio.play();
     } else return;
   })
