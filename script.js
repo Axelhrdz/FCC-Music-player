@@ -6,6 +6,8 @@ const dowloadButton = document.getElementById ('download');
 
 //Play thumbn
 const playTitle = document.getElementById('playTitle');
+const playSummary = document.getElementById('playSummary');
+const playDuration = document.getElementById('playDuration');
 
 //playlsit container
 const playlist = document.querySelector('.playlist');
@@ -123,6 +125,7 @@ renderSongs(allSongs);
 //Play function -------
 
 //defaul/first song
+playDuration.innerText = '...'
 let songSelected = allSongs[0].title;
 const defaultSong = "https://cdn.freecodecamp.org/curriculum/js-music-player/scratching-the-surface.mp3";
 audio.src = defaultSong;
@@ -131,7 +134,9 @@ audio.src = defaultSong;
 let isPlaying = false;
 
 const playFunction = () => {
-  playTitle.innerText = songSelected;
+  playTitle.innerText = songSelected;   //pending to fix this, when clicking out of the songs list, when pausing, it may take the erroneous "songSelected" value as the title text
+
+  //find the best way to evaluate if the songSelected, is the same as current song, or existen song, otherwise do not change the title innerText
   isPlaying = isPlaying ? false : true;
   console.log(isPlaying);
   pausePlaytoggle(isPlaying);
@@ -163,7 +168,7 @@ playlist.addEventListener('click', function(e){
 
   songSelected = e.target.innerText;
   console.log(songSelected);
-  playTitle.innerText = songSelected;
+  
 
   allSongs.forEach(e => {
     // console.log(e.title)
@@ -171,6 +176,9 @@ playlist.addEventListener('click', function(e){
     if(e.title === songSelected){
       // console.log(true);
       isPlaying = true;
+      playTitle.innerText = songSelected;
+      playSummary.innerText = e.artist;
+      playDuration.innerText = e.duration;
       audio.src = e.src;
       pausePlaytoggle(isPlaying);
       audio.play();
