@@ -112,8 +112,10 @@ const renderSongs = (array) => {
         `
         <span class="songTitle">${song.title}</span>
             <div class="songActions">
-                <span id="artist">${song.artist}</span>
-                <span id="minutes">${song.duration}</span>
+                <div class="info">
+                  <span id="artist">${song.artist}</span>
+                  <span id="minutes">${song.duration}</span>
+                </div>
                 <i id="delete${index}" class="fa-solid fa-delete-left"></i> 
             </div>
         `;

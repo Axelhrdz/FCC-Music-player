@@ -90,14 +90,20 @@ li{
     cursor: pointer;
 }
 .songTitle{
-    width: 60%;
+    width: 80%;
 }
 .songActions{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    width: 40%;
+    width: 20%;
+}
+.info{
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+    gap: 1rem;
 }
 .songActions i{
     cursor: pointer;
