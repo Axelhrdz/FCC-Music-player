@@ -142,10 +142,6 @@ const playFunction = () => {
   playTitle.innerText = songSelected; 
   playSummary.innerText = allSongs[0].artist;
   playDuration.innerText = allSongs[0].duration;
-  
-  //pending to fix this, when clicking out of the songs list, when pausing, it may take the erroneous "songSelected" value as the title text
-
-  //find the best way to evaluate if the songSelected, is the same as current song, or existen song, otherwise do not change the title innerText
 
   isPlaying = isPlaying ? false : true;
   console.log(isPlaying);
@@ -189,33 +185,3 @@ songTitle.forEach(song => {
     })
   })
 })
-
-
-// songTitle.addEventListener('click', function(e){
-//   // console.log(e.target);
-
-//   // songSelected = e.target.innerText;
-//   // console.log(songSelected);
-
-
-  
-
-//   allSongs.forEach(e => {
-//     // console.log(e.title)
-
-    
-
-    
-//     // if(e.title === songSelected){
-//     //   // console.log(true);
-//     //   isPlaying = true;
-//     //   playTitle.innerText = songSelected;
-//     //   playSummary.innerText = e.artist;
-//     //   playDuration.innerText = e.duration;
-//     //   audio.src = e.src;
-//     //   pausePlaytoggle(isPlaying);
-//     //   audio.play();
-//     // } else return;
-//   })
-// })
-
