@@ -92,13 +92,13 @@ const audio = new Audio();
 
 //  Getting songs list
 const songs = document.getElementById('songs');
-const songTitle = document.querySelector('.songTitle');
 const songActions = document.querySelector('.songActions');
 const artist = document.querySelector('.artist');
 const minutes = document.querySelector('.minutes');
 
 
-console.log(songTitle)
+
+console.log(songs);
 console.log(songActions)
 console.log(artist)
 console.log(minutes)
@@ -121,6 +121,11 @@ const renderSongs = (array) => {
     })
 }
 renderSongs(allSongs);
+
+//Getting only song list -----
+const songTitle = document.querySelectorAll('.songTitle');
+console.log(songTitle);
+
  
 //Play function -------
 
@@ -134,9 +139,14 @@ audio.src = defaultSong;
 let isPlaying = false;
 
 const playFunction = () => {
-  playTitle.innerText = songSelected;   //pending to fix this, when clicking out of the songs list, when pausing, it may take the erroneous "songSelected" value as the title text
+  playTitle.innerText = songSelected; 
+  playSummary.innerText = allSongs[0].artist;
+  playDuration.innerText = allSongs[0].duration;
+  
+  //pending to fix this, when clicking out of the songs list, when pausing, it may take the erroneous "songSelected" value as the title text
 
   //find the best way to evaluate if the songSelected, is the same as current song, or existen song, otherwise do not change the title innerText
+
   isPlaying = isPlaying ? false : true;
   console.log(isPlaying);
   pausePlaytoggle(isPlaying);
@@ -149,7 +159,7 @@ const playFunction = () => {
 }
 
 const pausePlaytoggle = (playing) => {
-    if(isPlaying){
+    if(playing){
       playButton.classList.remove('fa-play');
       playButton.classList.add('fa-pause');
     } else {
@@ -163,25 +173,49 @@ playButton.addEventListener('click', function(){
 })
 
 
-playlist.addEventListener('click', function(e){
-  // console.log(e.target);
-
-  songSelected = e.target.innerText;
-  console.log(songSelected);
-  
-
-  allSongs.forEach(e => {
-    // console.log(e.title)
-
-    if(e.title === songSelected){
-      // console.log(true);
-      isPlaying = true;
-      playTitle.innerText = songSelected;
-      playSummary.innerText = e.artist;
-      playDuration.innerText = e.duration;
-      audio.src = e.src;
-      pausePlaytoggle(isPlaying);
-      audio.play();
-    } else return;
+songTitle.forEach(song => {
+  song.addEventListener('click', function(e){
+    songSelected = song.innerHTML;
+    allSongs.forEach(ele => {
+      if(ele.title === songSelected){
+        isPlaying = true;
+        playTitle.innerText = songSelected;
+        playSummary.innerText = ele.artist;
+        playDuration.innerText = ele.duration;
+        audio.src = ele.src;
+        pausePlaytoggle(isPlaying);
+        audio.play();
+      } else return;
+    })
   })
 })
+
+
+// songTitle.addEventListener('click', function(e){
+//   // console.log(e.target);
+
+//   // songSelected = e.target.innerText;
+//   // console.log(songSelected);
+
+
+  
+
+//   allSongs.forEach(e => {
+//     // console.log(e.title)
+
+    
+
+    
+//     // if(e.title === songSelected){
+//     //   // console.log(true);
+//     //   isPlaying = true;
+//     //   playTitle.innerText = songSelected;
+//     //   playSummary.innerText = e.artist;
+//     //   playDuration.innerText = e.duration;
+//     //   audio.src = e.src;
+//     //   pausePlaytoggle(isPlaying);
+//     //   audio.play();
+//     // } else return;
+//   })
+// })
+
