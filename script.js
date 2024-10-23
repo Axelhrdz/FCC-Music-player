@@ -5,9 +5,9 @@ const addButton = document.getElementById ('add');
 const dowloadButton = document.getElementById ('download');
 
 //Play thumbn
-const playTitle = document.getElementById('playTitle');
-const playSummary = document.getElementById('playSummary');
-const playDuration = document.getElementById('playDuration');
+let playTitle = document.getElementById('playTitle');
+let playSummary = document.getElementById('playSummary');
+let playDuration = document.getElementById('playDuration');
 
 //playlsit container
 const playlist = document.querySelector('.playlist');
@@ -126,22 +126,33 @@ renderSongs(allSongs);
 const songTitle = document.querySelectorAll('.songTitle');
 console.log(songTitle);
 
- 
+
+
 //Play function -------
 
 //defaul/first song
 playDuration.innerText = '...'
 let songSelected = allSongs[0].title;
-const defaultSong = "https://cdn.freecodecamp.org/curriculum/js-music-player/scratching-the-surface.mp3";
+let defaultSong = "https://cdn.freecodecamp.org/curriculum/js-music-player/scratching-the-surface.mp3";
 audio.src = defaultSong;
 
 
 let isPlaying = false;
 
 const playFunction = () => {
-  playTitle.innerText = songSelected; 
-  playSummary.innerText = allSongs[0].artist;
-  playDuration.innerText = allSongs[0].duration;
+
+  if(isShuffle){
+    shuffleTest();  //it evaluates correct, but when clickimg play button, it shuffles even when you're pausing/plating non stop, has to be shuffling only once, after that it has to pause normally
+  } else {
+    playTitle.innerText = songSelected; 
+    playSummary.innerText = allSongs[0].artist;
+    playDuration.innerText = allSongs[0].duration;
+      
+    
+  }
+
+
+
 
   isPlaying = isPlaying ? false : true;
   console.log(isPlaying);
@@ -153,6 +164,47 @@ const playFunction = () => {
     audio.pause();
   }
 }
+
+
+
+
+
+
+
+
+//Shuffle function
+let isShuffle = false;
+const shuffleTriger = () => {
+  isShuffle = isShuffle ? false : true;
+  console.log(isShuffle);
+}
+
+
+const shuffleTest = () => {
+  const index = Math.floor(Math.random() * allSongs.length);
+  let ranSong = allSongs[index];
+        console.log(ranSong);
+
+  
+    songSelected = ranSong.title;
+    defaultSong = ranSong.src;
+    audio.src = defaultSong;
+  
+    playTitle.innerText = songSelected;
+    playSummary.innerText = ranSong.artist;
+    playDuration.innerText = ranSong.duration;
+  
+}
+// shuffleTest()
+shuffleButton.onclick = shuffleTriger;
+
+
+
+
+
+
+
+
 
 const pausePlaytoggle = (playing) => {
     if(playing){
