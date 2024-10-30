@@ -127,17 +127,58 @@ renderSongs(currentSongList = isShuffle ? shuffledArray : allSongs);
 
 shuffleButton.addEventListener('click', function(){
   ulSongs.innerHTML = ' ';
+  isPlaying = false;
+  pausePlaytoggle(isPlaying);
   isShuffle = isShuffle ? false : true;
   // console.log(isShuffle);
 
   if(isShuffle){
     shuffledArray = [...allSongs].sort((a,b) => 0.5 - Math.random());
-    renderSongs(currentSongList = isShuffle ? shuffledArray : allSongs);
+    // renderSongs(currentSongList = isShuffle ? shuffledArray : allSongs);
+    currentSongList = shuffledArray;
 
   } else {
-    renderSongs(currentSongList = isShuffle ? shuffledArray : allSongs);
+    // renderSongs(currentSongList = isShuffle ? shuffledArray : allSongs);
+    currentSongList = allSongs;
   }
+
+  renderSongs(currentSongList);
+
+  audio.src = currentSongList[0].src;
 })
+
+
+//play function
+let isPlaying = false;
+audio.src = currentSongList[0].src;
+// audio.src = defaultSong;
+const playFunction = () => {
+  isPlaying = isPlaying ? false : true;
+  console.log(isPlaying);
+
+  pausePlaytoggle(isPlaying);
+
+  if(isPlaying) {
+    audio.play()
+  } else {
+    audio.pause();
+  }
+}
+
+playButton.onclick = playFunction;  
+
+
+
+//Pause/Play
+const pausePlaytoggle = (playing) => {
+  if(playing){
+    playButton.classList.remove('fa-play');
+    playButton.classList.add('fa-pause');
+  } else {
+    playButton.classList.remove('fa-pause');
+    playButton.classList.add('fa-play');
+  }
+}
 
 
 
