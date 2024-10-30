@@ -98,90 +98,413 @@ const minutes = document.querySelector('.minutes');
 
 
 
-console.log(songs);
-console.log(songActions)
-console.log(artist)
-console.log(minutes)
-
+//Render songs
+let isShuffle = false;
+let shuffledArray;
+let currentSongList;
+let htmlSongs;
 const renderSongs = (array) => {
-    const htmlSongs = [...array];
-    htmlSongs.forEach((song, index) => {
-        const songItem = document.createElement('li');
-        songItem.classList.add('song');
-        songItem.innerHTML = 
-        `
-        <span class="songTitle">${song.title}</span>
-            <div class="songActions">
-                <span id="artist">${song.artist}</span>
-                <span id="minutes">${song.duration}</span>
-                <i id="delete${index}" class="fa-solid fa-delete-left"></i> 
-            </div>
-        `;
-        ulSongs.append(songItem);
-    })
+  htmlSongs = ' '
+  htmlSongs = [...array];
+  htmlSongs.forEach((song, index) => {
+    const songItem = document.createElement('li');
+    songItem.classList.add('song');
+    songItem.innerHTML = 
+      `
+      <span class="songTitle">${song.title}</span>
+          <div class="songActions">
+              <span id="artist">${song.artist}</span>
+              <span id="minutes">${song.duration}</span>
+              <i id="delete${index}" class="fa-solid fa-delete-left"></i> 
+          </div>
+      `;
+      ulSongs.append(songItem);
+  })
 }
-renderSongs(allSongs);
 
-//Getting only song list -----
-const songTitle = document.querySelectorAll('.songTitle');
-console.log(songTitle);
+renderSongs(currentSongList = isShuffle ? shuffledArray : allSongs);
+
+
+shuffleButton.addEventListener('click', function(){
+  ulSongs.innerHTML = ' ';
+  isShuffle = isShuffle ? false : true;
+  // console.log(isShuffle);
+
+  if(isShuffle){
+    shuffledArray = [...allSongs].sort((a,b) => 0.5 - Math.random());
+    renderSongs(currentSongList = isShuffle ? shuffledArray : allSongs);
+
+  } else {
+    renderSongs(currentSongList = isShuffle ? shuffledArray : allSongs);
+  }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// console.log(songs);
+// console.log(songActions)
+// console.log(artist)
+// console.log(minutes)
+
+// let isShuffle = false;
+// let currentSongList = allSongs;
+
+// const renderSongs = (array) => {
+//     ulSongs.innerHTML = '';
+    
+
+//     currentSongList = isShuffle ? shuffledArray : allSongs;
+
+//     const htmlSongs = [...array];
+//     htmlSongs.forEach((song, index) => {
+//         const songItem = document.createElement('li');
+//         songItem.classList.add('song');
+//         songItem.innerHTML = 
+//           `
+//           <span class="songTitle">${song.title}</span>
+//               <div class="songActions">
+//                   <span id="artist">${song.artist}</span>
+//                   <span id="minutes">${song.duration}</span>
+//                   <i id="delete${index}" class="fa-solid fa-delete-left"></i> 
+//               </div>
+//           `;
+//           ulSongs.append(songItem);
+//       })
+
+//       const songTitle = document.querySelectorAll('.songTitle');
+//       console.log(songTitle);
+
+//       songTitle.forEach(song => {
+//         song.addEventListener('click', function(e){
+//           console.log(song);
+//         })
+//       })
+
+
+//     // const htmlSongs = [...array];
+//     // htmlSongs.forEach((song, index) => {
+//     //     const songItem = document.createElement('li');
+//     //     songItem.classList.add('song');
+//     //     songItem.innerHTML = 
+//     //     `
+//     //     <span class="songTitle">${song.title}</span>
+//     //         <div class="songActions">
+//     //             <span id="artist">${song.artist}</span>
+//     //             <span id="minutes">${song.duration}</span>
+//     //             <i id="delete${index}" class="fa-solid fa-delete-left"></i> 
+//     //         </div>
+//     //     `;
+//     //     ulSongs.append(songItem);
+//     // })
+// }
+// renderSongs(currentSongList);
+
+// //Getting only song list -----
+
+
+
+
+
+
+
+
+
+// let shuffledArray;
+// const shuffleV2 = (array)=> {
+  
+//     // ulSongs.innerHTML = '';
+//     shuffledArray = array.sort((a,b) => 0.5 - Math.random());
+//     console.log(shuffledArray);
+
+//     // const htmlSongs = [...shuffledArray];
+//     // htmlSongs.forEach((song, index) => {
+//     //   const songItem = document.createElement('li');
+//     //   songItem.classList.add('song');
+//     //   songItem.innerHTML = 
+//     //     `
+//     //     <span class="songTitle">${song.title}</span>
+//     //         <div class="songActions">
+//     //             <span id="artist">${song.artist}</span>
+//     //             <span id="minutes">${song.duration}</span>
+//     //             <i id="delete${index}" class="fa-solid fa-delete-left"></i> 
+//     //         </div>
+//     //     `;
+//     //     ulSongs.append(songItem);
+//     // })
+
+//   }
+
+// shuffleButton.addEventListener('click', function(){
+//   isShuffle = isShuffle ? false : true;
+//   console.log(isShuffle);
+//   renderSongs(currentSongList);
+// })
+
+
+
+
 
  
-//Play function -------
+// //Play function -------
 
-//defaul/first song
-playDuration.innerText = '...'
-let songSelected = allSongs[0].title;
-const defaultSong = "https://cdn.freecodecamp.org/curriculum/js-music-player/scratching-the-surface.mp3";
-audio.src = defaultSong;
+// //defaul/first song
+// let songSelected;
+// let defaultSong;
 
 
-let isPlaying = false;
-
-const playFunction = () => {
-  playTitle.innerText = songSelected; 
-  playSummary.innerText = allSongs[0].artist;
-  playDuration.innerText = allSongs[0].duration;
-
-  isPlaying = isPlaying ? false : true;
-  console.log(isPlaying);
-  pausePlaytoggle(isPlaying);
-
-  if(isPlaying){
-    audio.play();
-  } else {
-    audio.pause();
-  }
-}
-
-const pausePlaytoggle = (playing) => {
-    if(playing){
-      playButton.classList.remove('fa-play');
-      playButton.classList.add('fa-pause');
-    } else {
-      playButton.classList.remove('fa-pause');
-      playButton.classList.add('fa-play');
-    }
-}
-
-playButton.addEventListener('click', function(){
-  playFunction();
-})
 
 
-songTitle.forEach(song => {
-  song.addEventListener('click', function(e){
-    songSelected = song.innerHTML;
-    allSongs.forEach(ele => {
-      if(ele.title === songSelected){
-        isPlaying = true;
-        playTitle.innerText = songSelected;
-        playSummary.innerText = ele.artist;
-        playDuration.innerText = ele.duration;
-        audio.src = ele.src;
-        pausePlaytoggle(isPlaying);
-        audio.play();
-      } else return;
-    })
-  })
-})
+
+// let isPlaying = false;
+
+// const playFunction = () => {
+
+// currentSongList = isShuffle ? shuffledArray : allSongs;
+// songSelected = currentSongList[0].title;
+// defaultSong = currentSongList[0].src;
+// audio.src = defaultSong;
+// playTitle.innerText = songSelected; 
+// playSummary.innerText = allSongs[0].artist;
+// playDuration.innerText = allSongs[0].duration;
+
+//   // playTitle.innerText = songSelected; 
+//   // playSummary.innerText = allSongs[0].artist;
+//   // playDuration.innerText = allSongs[0].duration;
+
+//   isPlaying = isPlaying ? false : true;
+//   console.log(isPlaying);
+//   pausePlaytoggle(isPlaying);
+
+//   if(isPlaying){
+//     audio.play();
+//   } else {
+//     audio.pause();
+//   }
+// }
+
+// const pausePlaytoggle = (playing) => {
+//     if(playing){
+//       playButton.classList.remove('fa-play');
+//       playButton.classList.add('fa-pause');
+//     } else {
+//       playButton.classList.remove('fa-pause');
+//       playButton.classList.add('fa-play');
+//     }
+// }
+
+
+// //Shuffle function ---
+// // let isShuffle = true;
+// // let shuffledArray = null;
+// // const shuffleV2 = (array, state)=> {
+// //   if(state){
+// //     ulSongs.innerHTML = '';
+// //     shuffledArray = array.sort((a,b) => 0.5 - Math.random());
+// //     console.log(shuffledArray);
+
+// //     const htmlSongs = [...shuffledArray];
+// //     htmlSongs.forEach((song, index) => {
+// //       const songItem = document.createElement('li');
+// //       songItem.classList.add('song');
+// //       songItem.innerHTML = 
+// //         `
+// //         <span class="songTitle">${song.title}</span>
+// //             <div class="songActions">
+// //                 <span id="artist">${song.artist}</span>
+// //                 <span id="minutes">${song.duration}</span>
+// //                 <i id="delete${index}" class="fa-solid fa-delete-left"></i> 
+// //             </div>
+// //         `;
+// //         ulSongs.append(songItem);
+// //     })
+
+// //   }
+// // }
+
+// // shuffleButton.addEventListener('click', function(){
+// //   shuffleV2(allSongs, isShuffle);
+// // })
+
+
+
+
+// playButton.addEventListener('click', function(){
+//   playFunction();
+// })
+
+
+// // songTitle.forEach(song => {
+// //   song.addEventListener('click', function(e){
+
+    
+
+// //     songSelected = song.innerHTML;
+// //     currentSongList.forEach(ele => {
+// //       if(ele.title === songSelected){
+// //         isPlaying = true;
+// //         playTitle.innerText = songSelected;
+// //         playSummary.innerText = ele.artist;
+// //         playDuration.innerText = ele.duration;
+// //         audio.src = ele.src;
+// //         pausePlaytoggle(isPlaying);
+// //         audio.play();
+// //       } else return;
+// //     })
+// //   })
+// // })
