@@ -103,8 +103,9 @@ let isShuffle = false;
 let shuffledArray;
 let currentSongList;
 let htmlSongs;
+let currentId = 0;
 const renderSongs = (array) => {
-  htmlSongs = ' '
+  htmlSongs = ' ';
   htmlSongs = [...array];
   htmlSongs.forEach((song, index) => {
     const songItem = document.createElement('li');
@@ -126,7 +127,7 @@ const renderSongs = (array) => {
 
   items.forEach(ele => {
     ele.addEventListener('click', function(e){
-      const currentId = e.target.id;
+      currentId = e.target.id;
       console.log(currentId);
 
       chooseSong(currentSongList, currentId);
@@ -138,6 +139,7 @@ renderSongs(currentSongList = isShuffle ? shuffledArray : allSongs);
 
 
 shuffleButton.addEventListener('click', function(){
+  currentId = 0;
   ulSongs.innerHTML = ' ';
   isPlaying = false;
   pausePlaytoggle(isPlaying);
@@ -160,16 +162,33 @@ shuffleButton.addEventListener('click', function(){
 })
 
 
+
+
+const songHeader = (id) => {
+  playTitle.innerText = currentSongList[id].title;
+  playSummary.innerText = currentSongList[id].artist;
+  playDuration.innerText = currentSongList[id].duration;
+}
+
+
+
+
+
+
+
 //play function
 let isPlaying = false;
-audio.src = currentSongList[0].src;
-// audio.src = defaultSong;
+audio.src = currentSongList[currentId].src;
+
+
+
 const playFunction = () => {
+  songHeader(currentId);
   isPlaying = isPlaying ? false : true;
   console.log(isPlaying);
-
+  
   pausePlaytoggle(isPlaying);
-
+  
   if(isPlaying) {
     audio.play()
   } else {
@@ -178,6 +197,7 @@ const playFunction = () => {
 }
 
 playButton.onclick = playFunction;  
+
 
 
 
